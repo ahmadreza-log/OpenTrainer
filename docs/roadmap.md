@@ -16,41 +16,44 @@ Listed in priority order. Each stage depends on the ones before it.
 
 ## 2. Prove the catalog with real data
 
-- [ ] Add 3 to 5 trainers whose authors publish on GitHub or have given permission
-- [ ] Publish the first `catalog.v1.json`
-- [ ] Write a maintainer review checklist from what those submissions teach us
+- [ ] Add 3 to 5 trainers whose authors publish on GitHub or have given permission (2 prepared so far; see the [evidence log](https://github.com/ahmadreza-log/OpenTrainer-Trainers/blob/main/docs/catalog-evidence.md))
+- [ ] Publish the first `catalog.v1.json` with real entries
+- [x] Write a maintainer review checklist from what those submissions teach us
+- [ ] Decide whether archives should be supported (D3), since most credible trainers ship as archives
 
 ## 3. Scaffold the application
 
-- [ ] Create the Tauri 2, React and TypeScript app
-- [ ] Add Tailwind CSS and shadcn/ui
-- [ ] Add lint, typecheck and test scripts so CI runs them
-- [ ] Lock down Tauri capabilities
+- [x] Create the Tauri 2, React and TypeScript app
+- [x] Add Tailwind CSS and shadcn/ui
+- [x] Add lint, typecheck and test scripts so CI runs them
+- [x] Lock down Tauri capabilities
 
 ## 4. Catalog client
 
-- [ ] Fetch, validate and cache the catalog
-- [ ] Fall back to the cached copy when offline
-- [ ] Add browse and search screens
+- [x] Fetch, validate and cache the catalog
+- [x] Fall back to the cached copy when offline
+- [x] Add browse and search screens
 
 ## 5. Secure downloads and library
 
-- [ ] Add SQLite storage and migrations
-- [ ] Stream downloads with size limits and SHA-256 checks
-- [ ] Install and uninstall trainers
-- [ ] Show version and compatibility status
+- [x] Add SQLite storage and migrations
+- [x] Stream downloads with size limits and SHA-256 checks
+- [x] Install and uninstall trainers
+- [x] Show version and compatibility status
 
 ## 6. Consent and execution
 
-- [ ] Write and approve an execution design first
-- [ ] Add the consent screen and record consent per file hash
-- [ ] Launch EXEs as a separate process
-- [ ] Block revoked releases and warn on stale catalogs (D6)
+- [x] Document the execution rules in the architecture doc
+- [x] Add the consent screen and record consent per file hash
+- [x] Launch EXEs as a separate process
+- [x] Block revoked releases and warn on stale catalogs (D6)
 
 ## 7. Public release
 
 - [ ] Decide on signing and updates (D7)
-- [ ] Build the release workflow and publish to GitHub Releases
+- [x] Build the release workflow
+- [ ] Publish the first release to GitHub Releases
+- [ ] Test a real trainer install and launch through the app
 - [ ] Test on clean Windows 10 and 11 machines
 
 ## 8. Later

@@ -19,7 +19,6 @@ jobs:
           node-version: lts/*
       - run: npx --yes prettier@3.9.10 --check "**/*.{md,yml,json}"
 
-  # The steps below stay skipped until the Tauri app is scaffolded.
   frontend:
     runs-on: ubuntu-latest
     timeout-minutes: 10

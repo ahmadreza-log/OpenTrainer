@@ -1,0 +1,7 @@
+{
+  "$schema": "../gen/schemas/desktop-schema.json",
+  "identifier": "default",
+  "description": "Main window. No shell, file system or network plugins are enabled, so all of that goes through checked Rust commands.",
+  "windows": ["main"],
+  "permissions": ["core:default"]
+}
