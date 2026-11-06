@@ -10,6 +10,8 @@
 
 The two repositories are versioned independently. They share one contract: the published catalog schema. The application doesn't depend on the trainers repository's source files or on its layout.
 
+Contributors follow the [trainer submission guide](https://github.com/ahmadreza-log/OpenTrainer-Trainers/blob/main/CONTRIBUTING.md), which covers the licensing evidence each pull request must include. Review results are kept in the [evidence log](https://github.com/ahmadreza-log/OpenTrainer-Trainers/blob/main/docs/catalog-evidence.md).
+
 ## Trainer submission
 
 ```mermaid

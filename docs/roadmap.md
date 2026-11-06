@@ -16,9 +16,10 @@ Listed in priority order. Each stage depends on the ones before it.
 
 ## 2. Prove the catalog with real data
 
-- [ ] Add 3 to 5 trainers whose authors publish on GitHub or have given permission
-- [ ] Publish the first `catalog.v1.json`
-- [ ] Write a maintainer review checklist from what those submissions teach us
+- [ ] Add 3 to 5 trainers whose authors publish on GitHub or have given permission (2 prepared so far; see the [evidence log](https://github.com/ahmadreza-log/OpenTrainer-Trainers/blob/main/docs/catalog-evidence.md))
+- [ ] Publish the first `catalog.v1.json` with real entries
+- [x] Write a maintainer review checklist from what those submissions teach us
+- [ ] Decide whether archives should be supported (D3), since most credible trainers ship as archives
 
 ## 3. Scaffold the application
 
