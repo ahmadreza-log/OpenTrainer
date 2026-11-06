@@ -1,0 +1,38 @@
+# Dependencies
+node_modules/
+
+# Frontend build output
+dist/
+*.tsbuildinfo
+
+# Rust and Tauri build output (keep Cargo.lock committed)
+src-tauri/target/
+src-tauri/gen/schemas/
+
+# Local data
+*.db
+*.db-shm
+*.db-wal
+*.sqlite
+*.sqlite3
+
+# Secrets, including Tauri updater signing keys
+.env
+.env.*
+!.env.example
+*.key
+*.pem
+*.pfx
+
+# Trainer binaries must never enter Git history
+*.exe
+*.dll
+
+# Logs and editor files
+*.log
+.vscode/*
+!.vscode/extensions.json
+.idea/
+Thumbs.db
+Desktop.ini
+.DS_Store
