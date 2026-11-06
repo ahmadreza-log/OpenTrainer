@@ -2,7 +2,7 @@
 
 A free, open-source Windows desktop app for discovering, installing and managing game trainers from a community catalog.
 
-> **Status: pre-alpha. The application does not exist yet.** This repository currently holds the project foundation only: documentation, templates and CI.
+> **Status: pre-alpha.** The app builds and installs, but it hasn't had a public release or been tested with a real trainer run from the app.
 
 OpenTrainer is an independent project. It is not affiliated with or endorsed by WeMod, Wand or any game publisher.
 
@@ -12,12 +12,13 @@ OpenTrainer is an independent project. It is not affiliated with or endorsed by 
 | ------------------------------------------- | ----------- |
 | Repository foundation, CI, templates        | Implemented |
 | Manifest and catalog schemas (catalog repo) | Implemented |
-| Catalog browsing with offline cache         | Planned     |
-| Download with SHA-256 verification          | Planned     |
-| Local trainer library (SQLite)              | Planned     |
-| Version and compatibility display           | Planned     |
-| Consent screen and EXE launching            | Planned     |
-| Application releases and updates            | Planned     |
+| Catalog browsing with offline cache         | Implemented |
+| Download with SHA-256 verification          | Implemented |
+| Local trainer library (SQLite)              | Implemented |
+| Version and compatibility display           | Implemented |
+| Consent screen and EXE launching            | Implemented |
+| Windows installer                           | Implemented |
+| Public releases and automatic updates       | Planned     |
 | Plugin DLL trainers                         | Planned     |
 
 ## Scope
@@ -32,7 +33,7 @@ Trainers are third-party executable code, and OpenTrainer treats them as untrust
 
 - A SHA-256 match proves a file is the one listed in the catalog. It does **not** prove the file is safe or who made it.
 - Maintainer review checks metadata and policy. Reviewers cannot prove a closed-source binary is harmless.
-- Planned: nothing will run without your explicit consent, each time the file or its risk changes.
+- Nothing runs without your explicit consent, which is asked again if the file or its risk changes.
 
 See [SECURITY.md](SECURITY.md) to report a vulnerability.
 

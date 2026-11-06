@@ -2,7 +2,7 @@
 
 Thanks for helping. This repository is for the application. To add or update a trainer, use [`opentrainer-trainers`](https://github.com/ahmadreza-log/OpenTrainer-Trainers).
 
-The application has not been scaffolded yet, so the most useful contributions right now are design feedback on [open decisions](docs/architecture.md#open-decisions) and items from the [roadmap](docs/roadmap.md).
+Good places to start are the [open decisions](docs/architecture.md#open-decisions) and the [roadmap](docs/roadmap.md).
 
 ## Ground rules
 
@@ -32,20 +32,20 @@ These will be declined:
 
 ## Development
 
-Requirements once the application exists: Node.js LTS, the stable Rust toolchain and the [Tauri prerequisites for Windows](https://tauri.app/start/prerequisites/).
-
-These commands apply after scaffolding:
+Requirements: Node.js LTS, the stable Rust toolchain and the [Tauri prerequisites for Windows](https://tauri.app/start/prerequisites/).
 
 ```bash
 npm ci
 npm run tauri dev
 ```
 
+To build the installer, run `npx tauri build`. `npm run dev` alone opens a browser preview with simulated data, which isn't how the app ships.
+
 ## Pull requests
 
 1. Branch from `main`.
 2. Make the change and add tests for non-trivial logic.
-3. Make sure CI passes. It checks formatting, and linting and tests once the code exists.
+3. Make sure CI passes. It checks formatting, linting, types and tests.
 4. Fill in the pull request template.
 
 Contributions are licensed under the [MIT License](LICENSE).

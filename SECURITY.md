@@ -24,4 +24,4 @@ Antivirus detections of a trainer are not automatically an application vulnerabi
 
 ## Limits of our protection
 
-Once the app exists, SHA-256 verification will show that a file matches the catalog entry, not that the file is safe. Trainers will run with your user permissions, or as administrator if you approve elevation, and OpenTrainer won't sandbox them. Only run trainers from authors you trust.
+SHA-256 verification shows that a file matches the catalog entry, not that the file is safe. Trainers run with your user permissions, or as administrator if you approve elevation, and OpenTrainer doesn't sandbox them. Only run trainers from authors you trust.
