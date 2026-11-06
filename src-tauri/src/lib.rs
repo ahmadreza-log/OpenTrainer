@@ -1,11 +1,13 @@
 mod catalog;
 mod downloads;
 mod execution;
+mod presets;
 mod storage;
 
 use catalog::Catalog;
 use rusqlite::Connection;
 use serde::Serialize;
+use std::collections::HashMap;
 use std::path::{Path, PathBuf};
 use std::sync::{Mutex, RwLock};
 use storage::Installed;
@@ -216,6 +218,16 @@ fn launch_trainer(
     execution::launch(&path)
 }
 
+#[tauri::command(async)]
+fn presets_folder() -> Result<String, String> {
+    presets::folder().map(|path| path.display().to_string())
+}
+
+#[tauri::command(async)]
+fn save_preset(name: String, values: HashMap<String, f64>) -> Result<String, String> {
+    presets::save(&presets::folder()?, &name, &values).map(|path| path.display().to_string())
+}
+
 pub fn run() {
     tauri::Builder::default()
         .setup(|app| {
@@ -237,7 +249,9 @@ pub fn run() {
             install_trainer,
             uninstall_trainer,
             has_consent,
-            launch_trainer
+            launch_trainer,
+            presets_folder,
+            save_preset
         ])
         .run(tauri::generate_context!())
         .expect("failed to start OpenTrainer");

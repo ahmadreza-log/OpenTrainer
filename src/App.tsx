@@ -22,6 +22,8 @@ export interface AppActions {
   install: (key: ReleaseKey) => void;
   uninstall: (key: ReleaseKey) => void;
   start: (trainer: Trainer, release: Release) => void;
+  presetsFolder: () => Promise<string>;
+  savePreset: (name: string, values: Record<string, number>) => Promise<string>;
 }
 
 type Page = { name: "discover" | "library" } | { name: "game"; id: string };
@@ -86,6 +88,8 @@ export function App() {
   }, [refresh]);
 
   const actions: AppActions = {
+    presetsFolder: () => api.current!.presetsFolder(),
+    savePreset: (name, values) => api.current!.savePreset(name, values),
     isInstalled: (key) =>
       installed.some(
         (item) =>

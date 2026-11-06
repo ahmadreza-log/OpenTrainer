@@ -10,6 +10,7 @@ const SEED: &str = include_str!("../resources/catalog-seed.v1.json");
 const MAX_CATALOG_BYTES: u64 = 16 * 1024 * 1024;
 const MAX_TRAINER_BYTES: u64 = 524_288_000;
 const STALE_AFTER_SECONDS: u64 = 7 * 24 * 60 * 60;
+pub const V_RISING_ID: &str = "v-rising";
 
 #[derive(Clone, Serialize, Deserialize)]
 #[serde(rename_all = "camelCase")]
@@ -157,16 +158,31 @@ pub fn is_stale(last_checked: Option<u64>, now: u64) -> bool {
     last_checked.is_none_or(|checked| now.saturating_sub(checked) > STALE_AFTER_SECONDS)
 }
 
+/// The app supports only V Rising for now, whatever the catalog lists. V Rising is built in, so it's
+/// always available even when the catalog has no entry for it.
+fn restrict(mut catalog: Catalog) -> Catalog {
+    catalog
+        .trainers
+        .retain(|trainer| trainer.game_id == V_RISING_ID);
+    catalog.games = vec![Game {
+        id: V_RISING_ID.into(),
+        name: "V Rising".into(),
+    }];
+    catalog
+}
+
 /// Uses the newest valid copy, so an old cached or downloaded catalog can't undo a revocation.
 pub fn load_local(data_dir: &Path) -> Catalog {
     let seed = parse(SEED).expect("the bundled catalog is checked by tests");
-    match fs::read_to_string(data_dir.join("catalog.v1.json"))
-        .ok()
-        .and_then(|text| parse(&text).ok())
-    {
-        Some(cached) if cached.generated_at >= seed.generated_at => cached,
-        _ => seed,
-    }
+    restrict(
+        match fs::read_to_string(data_dir.join("catalog.v1.json"))
+            .ok()
+            .and_then(|text| parse(&text).ok())
+        {
+            Some(cached) if cached.generated_at >= seed.generated_at => cached,
+            _ => seed,
+        },
+    )
 }
 
 pub fn last_checked(data_dir: &Path) -> Option<u64> {
@@ -199,7 +215,7 @@ pub fn refresh(data_dir: &Path, current: &Catalog) -> Result<Catalog, String> {
     let temp = data_dir.join("catalog.v1.json.tmp");
     fs::write(&temp, &text).map_err(|e| e.to_string())?;
     fs::rename(&temp, data_dir.join("catalog.v1.json")).map_err(|e| e.to_string())?;
-    Ok(fresh)
+    Ok(restrict(fresh))
 }
 
 pub fn find_release<'a>(
@@ -221,16 +237,62 @@ pub fn find_release<'a>(
 mod tests {
     use super::*;
 
+    const FIXTURE: &str = r#"{
+        "schemaVersion": 1,
+        "generatedAt": "2026-01-01T00:00:00.000Z",
+        "games": [{ "id": "other-game", "name": "Other Game" }],
+        "trainers": [{
+            "id": "other-trainer",
+            "gameId": "other-game",
+            "name": "Other Trainer",
+            "summary": "A fixture.",
+            "author": { "name": "Author" },
+            "license": { "name": "MIT", "url": "https://example.org/license" },
+            "releases": [{
+                "version": "1.0.0",
+                "status": "active",
+                "publishedAt": "2026-01-01",
+                "format": "exe",
+                "requiresElevation": false,
+                "gameVersions": ["1.0"],
+                "download": {
+                    "url": "https://github.com/a/b/releases/download/v1/a.exe",
+                    "fileName": "a.exe",
+                    "sha256": "2c26b46b68ffc68ff99b453c1d30413413422d706483bfa0f98a5e886266e7ae",
+                    "sizeBytes": 3
+                }
+            }]
+        }]
+    }"#;
+
     fn seed_with(change: impl Fn(&mut serde_json::Value)) -> Result<Catalog, String> {
-        let mut value: serde_json::Value = serde_json::from_str(SEED).unwrap();
+        let mut value: serde_json::Value = serde_json::from_str(FIXTURE).unwrap();
         change(&mut value);
         parse(&value.to_string())
     }
 
     #[test]
     fn bundled_catalog_is_valid() {
-        let catalog = parse(SEED).unwrap();
-        assert!(!catalog.trainers.is_empty());
+        assert!(parse(SEED).unwrap().trainers.is_empty());
+    }
+
+    #[test]
+    fn only_v_rising_is_available() {
+        let mut other = parse(FIXTURE).unwrap();
+        let mut listed = other.trainers[0].clone();
+        listed.game_id = V_RISING_ID.into();
+        other.trainers.push(listed);
+
+        let catalog = restrict(other);
+        assert_eq!(catalog.games.len(), 1);
+        assert_eq!(catalog.games[0].id, V_RISING_ID);
+        assert_eq!(catalog.trainers.len(), 1);
+        assert_eq!(catalog.trainers[0].game_id, V_RISING_ID);
+    }
+
+    #[test]
+    fn v_rising_is_available_from_an_empty_catalog() {
+        assert_eq!(restrict(parse(SEED).unwrap()).games[0].id, V_RISING_ID);
     }
 
     #[test]

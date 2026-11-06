@@ -10,6 +10,7 @@
     "typecheck": "tsc --noEmit",
     "test": "vitest run",
     "format": "prettier --write .",
+    "check:game": "node scripts/check-game.mjs",
     "tauri": "tauri"
   },
   "dependencies": {

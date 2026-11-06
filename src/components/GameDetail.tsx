@@ -1,6 +1,7 @@
 import { ArrowLeft, ShieldAlert } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { ReleaseActions } from "@/components/ReleaseActions";
+import { VRisingPresets } from "@/components/VRisingPresets";
 import type { Game, Trainer } from "@/lib/api";
 import { gameArt, latestActive } from "@/lib/format";
 import type { AppActions } from "@/App";
@@ -96,6 +97,7 @@ export function GameDetail({
         </div>
       </div>
       <div className="mx-auto max-w-6xl space-y-4">
+        {game.id === "v-rising" && <VRisingPresets actions={actions} />}
         {trainers.map((trainer) => (
           <TrainerCard key={trainer.id} trainer={trainer} actions={actions} />
         ))}

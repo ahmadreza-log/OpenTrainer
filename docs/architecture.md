@@ -15,6 +15,10 @@ flowchart LR
   Core -.->|after consent, separate process| Trainer[Trainer EXE]
 ```
 
+## Supported games
+
+The app supports only V Rising for now. `catalog::restrict` removes every other game from the catalog after it's loaded or refreshed, and V Rising's presets are built in rather than downloaded. The community catalog can list more games without the app showing them.
+
 ## Rust modules
 
 | Module      | Responsibility                                                        |
@@ -24,6 +28,7 @@ flowchart LR
 | `library`   | Track installed trainers, versions and removal                        |
 | `storage`   | SQLite access and migrations                                          |
 | `execution` | Starts a trainer as its own process                                   |
+| `presets`   | Builds and writes V Rising world presets                              |
 
 Modules talk through plain Rust interfaces. They become separate crates only if that solves a real problem.
 

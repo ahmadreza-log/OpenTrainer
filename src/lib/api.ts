@@ -67,6 +67,8 @@ export interface Api {
   hasConsent(key: ReleaseKey): Promise<boolean>;
   launch(key: ReleaseKey, accept: boolean): Promise<void>;
   onProgress(handler: (progress: InstallProgress) => void): () => void;
+  presetsFolder(): Promise<string>;
+  savePreset(name: string, values: Record<string, number>): Promise<string>;
 }
 
 const desktopApi: Api = {
@@ -77,6 +79,8 @@ const desktopApi: Api = {
   uninstall: (key) => invoke("uninstall_trainer", key),
   hasConsent: (key) => invoke("has_consent", key),
   launch: (key, accept) => invoke("launch_trainer", { ...key, accept }),
+  presetsFolder: () => invoke("presets_folder"),
+  savePreset: (name, values) => invoke("save_preset", { name, values }),
   onProgress(handler) {
     const stop = listen<InstallProgress>("install-progress", (event) =>
       handler(event.payload),

@@ -72,7 +72,9 @@ export function Discover({
                       {game.name}
                     </p>
                     <p className="mt-0.5 text-sm text-mute">
-                      {count} {count === 1 ? "trainer" : "trainers"}
+                      {game.id === "v-rising"
+                        ? "World presets"
+                        : `${count} ${count === 1 ? "trainer" : "trainers"}`}
                     </p>
                   </div>
                 </button>

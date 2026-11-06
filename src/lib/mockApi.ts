@@ -2,7 +2,7 @@ import seed from "../../src-tauri/resources/catalog-seed.v1.json";
 import type { Api, CatalogView, Installed, InstallProgress } from "./api";
 
 const view = {
-  catalog: seed,
+  catalog: { ...seed, games: [{ id: "v-rising", name: "V Rising" }] },
   lastChecked: Math.floor(Date.now() / 1000),
   stale: false,
 } as unknown as CatalogView;
@@ -46,6 +46,8 @@ export const mockApi: Api = {
   async launch(key, accept) {
     if (accept) consents.add(key.trainerId + key.version);
   },
+  presetsFolder: async () => "(browser preview)",
+  savePreset: async (name) => `(browser preview)\\${name}.json`,
   onProgress(handler) {
     handlers.add(handler);
     return () => handlers.delete(handler);

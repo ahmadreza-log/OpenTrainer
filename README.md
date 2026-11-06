@@ -1,6 +1,8 @@
 # OpenTrainer
 
-A free, open-source Windows desktop app for discovering, installing and managing game trainers from a community catalog.
+A free, open-source Windows desktop app for discovering, installing and managing game trainers.
+
+**OpenTrainer currently supports V Rising only.** It creates world presets from the game's own settings, without editing game memory or files. Other games listed in the community catalog aren't shown.
 
 > **Status: pre-alpha.** The app builds and installs, but it hasn't had a public release or been tested with a real trainer run from the app.
 
@@ -19,6 +21,7 @@ OpenTrainer is an independent project. It is not affiliated with or endorsed by 
 | Consent screen and EXE launching            | Implemented |
 | Windows installer                           | Implemented |
 | Public releases and automatic updates       | Planned     |
+| V Rising world presets                      | Implemented |
 | Plugin DLL trainers                         | Planned     |
 
 ## Scope

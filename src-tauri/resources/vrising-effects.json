@@ -1,0 +1,251 @@
+{
+  "schemaVersion": 1,
+  "testedGameVersion": "1.1.13.0",
+  "groups": [
+    { "id": "character", "label": "Character" },
+    { "id": "survival", "label": "Survival" },
+    { "id": "economy", "label": "Resources & crafting" }
+  ],
+  "effects": [
+    {
+      "id": "max-health",
+      "group": "character",
+      "label": "Maximum health",
+      "path": "VampireStatModifiers.MaxHealthModifier",
+      "min": 0.5,
+      "max": 5,
+      "step": 0.25,
+      "default": 1
+    },
+    {
+      "id": "physical-power",
+      "group": "character",
+      "label": "Physical power",
+      "path": "VampireStatModifiers.PhysicalPowerModifier",
+      "min": 0.5,
+      "max": 5,
+      "step": 0.25,
+      "default": 1
+    },
+    {
+      "id": "spell-power",
+      "group": "character",
+      "label": "Spell power",
+      "path": "VampireStatModifiers.SpellPowerModifier",
+      "min": 0.5,
+      "max": 5,
+      "step": 0.25,
+      "default": 1
+    },
+    {
+      "id": "resource-power",
+      "group": "character",
+      "label": "Harvesting power",
+      "path": "VampireStatModifiers.ResourcePowerModifier",
+      "min": 0.5,
+      "max": 5,
+      "step": 0.25,
+      "default": 1
+    },
+    {
+      "id": "damage-received",
+      "group": "character",
+      "label": "Damage received",
+      "path": "VampireStatModifiers.DamageReceivedModifier",
+      "min": 0.1,
+      "max": 2,
+      "step": 0.05,
+      "default": 1
+    },
+    {
+      "id": "sun-damage",
+      "group": "survival",
+      "label": "Sun damage",
+      "path": "SunDamageModifier",
+      "min": 0,
+      "max": 2,
+      "step": 0.05,
+      "default": 1
+    },
+    {
+      "id": "garlic-strength",
+      "group": "survival",
+      "label": "Garlic strength",
+      "path": "GarlicAreaStrengthModifier",
+      "min": 0,
+      "max": 2,
+      "step": 0.05,
+      "default": 1
+    },
+    {
+      "id": "holy-strength",
+      "group": "survival",
+      "label": "Holy strength",
+      "path": "HolyAreaStrengthModifier",
+      "min": 0,
+      "max": 2,
+      "step": 0.05,
+      "default": 1
+    },
+    {
+      "id": "silver-strength",
+      "group": "survival",
+      "label": "Silver strength",
+      "path": "SilverStrengthModifier",
+      "min": 0,
+      "max": 2,
+      "step": 0.05,
+      "default": 1
+    },
+    {
+      "id": "blood-drain",
+      "group": "survival",
+      "label": "Blood drain",
+      "path": "BloodDrainModifier",
+      "min": 0,
+      "max": 2,
+      "step": 0.05,
+      "default": 1
+    },
+    {
+      "id": "durability-drain",
+      "group": "survival",
+      "label": "Durability drain",
+      "path": "DurabilityDrainModifier",
+      "min": 0,
+      "max": 2,
+      "step": 0.05,
+      "default": 1
+    },
+    {
+      "id": "material-yield",
+      "group": "economy",
+      "label": "Material yield",
+      "path": "MaterialYieldModifier_Global",
+      "min": 0.5,
+      "max": 5,
+      "step": 0.25,
+      "default": 1
+    },
+    {
+      "id": "drop-rate",
+      "group": "economy",
+      "label": "Loot drops",
+      "path": "DropTableModifier_General",
+      "min": 0.5,
+      "max": 5,
+      "step": 0.25,
+      "default": 1
+    },
+    {
+      "id": "inventory-stacks",
+      "group": "economy",
+      "label": "Stack size",
+      "path": "InventoryStacksModifier",
+      "min": 1,
+      "max": 5,
+      "step": 0.25,
+      "default": 1
+    },
+    {
+      "id": "craft-rate",
+      "group": "economy",
+      "label": "Crafting speed",
+      "path": "CraftRateModifier",
+      "min": 0.5,
+      "max": 5,
+      "step": 0.25,
+      "default": 1
+    },
+    {
+      "id": "refinement-rate",
+      "group": "economy",
+      "label": "Refining speed",
+      "path": "RefinementRateModifier",
+      "min": 0.5,
+      "max": 5,
+      "step": 0.25,
+      "default": 1
+    },
+    {
+      "id": "build-cost",
+      "group": "economy",
+      "label": "Building cost",
+      "path": "BuildCostModifier",
+      "min": 0,
+      "max": 2,
+      "step": 0.05,
+      "default": 1
+    },
+    {
+      "id": "recipe-cost",
+      "group": "economy",
+      "label": "Recipe cost",
+      "path": "RecipeCostModifier",
+      "min": 0,
+      "max": 2,
+      "step": 0.05,
+      "default": 1
+    },
+    {
+      "id": "research-cost",
+      "group": "economy",
+      "label": "Research cost",
+      "path": "ResearchCostModifier",
+      "min": 0,
+      "max": 2,
+      "step": 0.05,
+      "default": 1
+    }
+  ],
+  "profiles": [
+    {
+      "id": "default",
+      "label": "Game defaults",
+      "values": {}
+    },
+    {
+      "id": "relaxed",
+      "label": "Relaxed",
+      "values": {
+        "max-health": 1.5,
+        "damage-received": 0.7,
+        "sun-damage": 0.5,
+        "blood-drain": 0.5,
+        "durability-drain": 0.5
+      }
+    },
+    {
+      "id": "builder",
+      "label": "Builder",
+      "values": {
+        "resource-power": 2,
+        "material-yield": 3,
+        "inventory-stacks": 3,
+        "craft-rate": 3,
+        "refinement-rate": 3,
+        "build-cost": 0.25,
+        "recipe-cost": 0.5,
+        "research-cost": 0.5
+      }
+    },
+    {
+      "id": "test",
+      "label": "Test build",
+      "values": {
+        "max-health": 5,
+        "physical-power": 5,
+        "spell-power": 5,
+        "damage-received": 0.1,
+        "sun-damage": 0,
+        "garlic-strength": 0,
+        "holy-strength": 0,
+        "silver-strength": 0,
+        "blood-drain": 0,
+        "durability-drain": 0,
+        "material-yield": 5,
+        "craft-rate": 5
+      }
+    }
+  ]
+}

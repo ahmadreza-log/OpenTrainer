@@ -1,0 +1,16 @@
+{
+  "values": {
+    "max-health": 2,
+    "damage-received": 0.5,
+    "sun-damage": 0,
+    "craft-rate": 1
+  },
+  "expected": {
+    "GameModeType": "PvE",
+    "SunDamageModifier": 0,
+    "VampireStatModifiers": {
+      "MaxHealthModifier": 2,
+      "DamageReceivedModifier": 0.5
+    }
+  }
+}

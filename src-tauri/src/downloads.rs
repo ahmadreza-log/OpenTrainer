@@ -110,23 +110,22 @@ mod tests {
         assert!(check(FOO_SHA256, 4).unwrap_err().contains("incomplete"));
     }
 
-    // Downloads a real listed trainer without running it: cargo test -- --ignored
+    // Downloads a small real release file without running it: cargo test -- --ignored
     #[test]
     #[ignore = "needs the network"]
     fn installs_a_real_release() {
-        let catalog = crate::catalog::load_local(&std::env::temp_dir());
-        let release = crate::catalog::find_release(
-            &catalog,
-            "olden-era-trainer",
-            "heroes-of-might-and-magic-olden-era",
-            "0.1.0",
-        )
-        .unwrap();
+        let release = Download {
+            url: "https://github.com/cli/cli/releases/download/v2.40.0/gh_2.40.0_checksums.txt"
+                .into(),
+            file_name: String::new(),
+            sha256: "1e9270806bf85116c7fd351e6766d98b0862fbc0cec400cd133d4e274bdc58b5".into(),
+            size_bytes: 1760,
+        };
         let directory = std::env::temp_dir().join("opentrainer-install-test");
         let destination = directory.join("trainer.exe");
         let _ = fs::remove_file(&destination);
-        install(&release.download, &destination, |_| {}).unwrap();
-        assert_eq!(hash_file(&destination).unwrap(), release.download.sha256);
+        install(&release, &destination, |_| {}).unwrap();
+        assert_eq!(hash_file(&destination).unwrap(), release.sha256);
         assert!(
             fs::read_to_string(format!("{}:Zone.Identifier", destination.display()))
                 .unwrap()

@@ -16,23 +16,23 @@ describe("formatBytes", () => {
 
 describe("gameArt", () => {
   it("is stable per game and differs between games", () => {
-    expect(gameArt("god-hand")).toBe(gameArt("god-hand"));
-    expect(gameArt("god-hand")).not.toBe(gameArt("other-game"));
+    expect(gameArt("v-rising")).toBe(gameArt("v-rising"));
+    expect(gameArt("v-rising")).not.toBe(gameArt("other-game"));
   });
 });
 
 describe("initials", () => {
   it("uses capitalized words only", () => {
-    expect(initials("God Hand")).toBe("GH");
-    expect(initials("Heroes of Might and Magic: Olden Era")).toBe("HMM");
+    expect(initials("V Rising")).toBe("VR");
+    expect(initials("Some of Long Name: With Words")).toBe("SLN");
   });
 });
 
 describe("matchesSearch", () => {
   it("ignores case and spacing, and an empty search matches all", () => {
-    expect(matchesSearch(" GOD ", "God Hand")).toBe(true);
+    expect(matchesSearch(" RISING ", "V Rising")).toBe(true);
     expect(matchesSearch("", "anything")).toBe(true);
-    expect(matchesSearch("zelda", "God Hand", "Author")).toBe(false);
+    expect(matchesSearch("zelda", "V Rising", "Author")).toBe(false);
   });
 });
 

@@ -21,6 +21,11 @@ Listed in priority order. Each stage depends on the ones before it.
 - [x] Write a maintainer review checklist from what those submissions teach us
 - [ ] Decide whether archives should be supported (D3), since most credible trainers ship as archives
 
+## Current scope
+
+- [x] Limit the app to V Rising and build its world presets in
+- [ ] Test a saved preset in the game
+
 ## 3. Scaffold the application
 
 - [x] Create the Tauri 2, React and TypeScript app
