@@ -9,9 +9,10 @@ Listed in priority order. Each stage depends on the ones before it.
 - [ ] Decide hosting rules (D2)
 - [ ] Replace the `CONDUCT_CONTACT` placeholder in both repositories
 - [x] Create both public repositories and push
-- [ ] Enable private vulnerability reporting on both
-- [ ] Protect `main`: require pull requests and passing CI
-- [ ] Pin GitHub Actions to commit SHAs
+- [x] Enable private vulnerability reporting on both
+- [x] Protect `main`: require pull requests
+- [ ] Add required status checks: `format`, `frontend` and `rust` in OpenTrainer, `validate` in OpenTrainer-Trainers
+- [x] Pin GitHub Actions to commit SHAs
 
 ## 2. Prove the catalog with real data
 

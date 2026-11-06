@@ -1,0 +1,2 @@
+# Changes here can weaken the checks that review relies on.
+/.github/ @ahmadreza-log
