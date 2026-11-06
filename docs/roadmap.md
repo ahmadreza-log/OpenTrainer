@@ -4,7 +4,8 @@ Listed in priority order. Each stage depends on the ones before it.
 
 ## 1. Publish the foundation
 
-- [ ] Decide the owner, name and license (D1, D9, D10 in [open decisions](architecture.md#open-decisions))
+- [x] Decide the trainers repository license (D1)
+- [ ] Decide the conduct contact, reviewers and name (D9, D10 in [open decisions](architecture.md#open-decisions))
 - [ ] Decide hosting rules (D2)
 - [ ] Replace the `CONDUCT_CONTACT` placeholder in both repositories
 - [x] Create both public repositories and push

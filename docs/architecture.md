@@ -85,7 +85,7 @@ Each needs maintainer approval. The recommendation is what this foundation curre
 
 | #   | Decision                                                                                                                       | Recommendation                                                                        |
 | --- | ------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------- |
-| D1  | License for `opentrainer-trainers` scripts and metadata. It has none yet, so others have no clear right to reuse them.         | MIT for scripts, CC0 for metadata, with trainer files explicitly excluded.            |
+| D1  | License for `opentrainer-trainers`. **Decided.**                                                                               | MIT for scripts, schemas and docs. CC0 for metadata. Trainer files are excluded.      |
 | D2  | Where trainer files may be hosted.                                                                                             | GitHub Releases only, either the author's own or with documented permission.          |
 | D3  | Whether to support archives.                                                                                                   | Later, with ZIP only. Extraction adds path-traversal risk and multi-file installs.    |
 | D4  | DLL rule.                                                                                                                      | Never in the main process, with no trust exception. Design a separate host later.     |
