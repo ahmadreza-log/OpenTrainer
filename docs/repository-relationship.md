@@ -44,7 +44,7 @@ The steps below are planned.
 
 ## Changing a published release
 
-Published releases are immutable. CI rejects any change to a published release's URL, file name, hash or size, and rejects deleting it. To change something:
+Published releases are immutable. CI rejects any change to a published release's URL, file name, hash or size, and rejects deleting it or turning off `requiresElevation`. Revocation is permanent: CI rejects undoing it or listing the same file again. To change something:
 
 - **New file:** add a new release entry.
 - **Outdated release:** set `status` to `deprecated`, with a reason.

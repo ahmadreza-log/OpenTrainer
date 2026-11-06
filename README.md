@@ -32,7 +32,7 @@ Trainers are third-party executable code, and OpenTrainer treats them as untrust
 
 - A SHA-256 match proves a file is the one listed in the catalog. It does **not** prove the file is safe or who made it.
 - Maintainer review checks metadata and policy. Reviewers cannot prove a closed-source binary is harmless.
-- Nothing runs without your explicit consent, each time the file or its risk changes.
+- Planned: nothing will run without your explicit consent, each time the file or its risk changes.
 
 See [SECURITY.md](SECURITY.md) to report a vulnerability.
 
